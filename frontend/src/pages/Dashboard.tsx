@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Camera, MapPin, Clock, CheckCircle, XCircle } from 'lucide-react';
 import CameraModal from '../components/CameraModal';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const Dashboard: React.FC = () => {
   const { user, token, logout } = useAuth();

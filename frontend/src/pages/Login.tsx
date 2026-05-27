@@ -4,6 +4,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { LogIn } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +16,7 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post(`${API_URL}/auth/login`, { email, password });
       login(res.data.token, { email, role: res.data.role, userId: res.data.userId });
       navigate('/');
     } catch (err: any) {
