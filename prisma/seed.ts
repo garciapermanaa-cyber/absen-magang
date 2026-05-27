@@ -1,7 +1,9 @@
 import 'dotenv/config';
 import prisma from '../src/utils/prisma';
+import bcrypt from 'bcrypt';
 
 async function main() {
+  // 1. Seed Office
   const offices = [
     {
       name: 'Newus Technology',
@@ -19,7 +21,22 @@ async function main() {
     });
   }
 
+  // 2. Seed Default Admin
+  const adminEmail = 'admin@newus.id';
+  const hashedPassword = await bcrypt.hash('admin123', 10);
+
+  await prisma.user.upsert({
+    where: { email: adminEmail },
+    update: {},
+    create: {
+      email: adminEmail,
+      password: hashedPassword,
+      role: 'ADMIN',
+    },
+  });
+
   console.log('Seed data created successfully');
+  console.log('Admin Login: admin@newus.id / admin123');
 }
 
 main()
