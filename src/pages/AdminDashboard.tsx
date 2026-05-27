@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import { Users, UserCheck, UserX, AlertCircle, RefreshCw } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const AdminDashboard: React.FC = () => {
   const { token, logout } = useAuth();
