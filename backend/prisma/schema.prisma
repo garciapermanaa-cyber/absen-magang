@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  password    String
+  role        Role         @default(USER)
+  officeId    Int?
+  office      Office?      @relation(fields: [officeId], references: [id])
+  attendances Attendance[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Office {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  latitude  Float
+  longitude Float
+  radius    Float    @default(100) // in meters
+  users     User[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Attendance {
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  user              User     @relation(fields: [userId], references: [id])
+  date              DateTime @default(now()) @db.Date
+  clockIn           DateTime?
+  clockOut          DateTime?
+  latIn             Float?
+  longIn            Float?
+  latOut            Float?
+  longOut           Float?
+  accuracyIn        Float?
+  accuracyOut       Float?
+  distanceIn        Float?
+  distanceOut       Float?
+  locationValidIn   Boolean?
+  locationValidOut  Boolean?
+  cameraVerifiedIn  Boolean? @default(false)
+  cameraVerifiedOut Boolean? @default(false)
+  status            String   // PRESENT, LATE, ABSENT, etc.
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([userId, date])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
