@@ -4,16 +4,10 @@ import prisma from '../src/utils/prisma';
 async function main() {
   const offices = [
     {
-      name: 'Main Office',
-      latitude: -6.200000,
-      longitude: 106.816666,
+      name: 'Newus Technology',
+      latitude: -5.4259694,
+      longitude: 105.2722250,
       radius: 100,
-    },
-    {
-      name: 'Branch Office',
-      latitude: -6.300000,
-      longitude: 106.916666,
-      radius: 150,
     },
   ];
 

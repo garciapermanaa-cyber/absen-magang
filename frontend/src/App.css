@@ -202,3 +202,72 @@ td {
   cursor: pointer;
   font-size: 14px;
 }
+
+/* Admin Dashboard Specifics */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.stat-info .label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-info .value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.icon-blue { color: #3b82f6; }
+.icon-green { color: #22c55e; }
+.icon-orange { color: #f59e0b; }
+.icon-red { color: #ef4444; }
+
+.verification-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.pill {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pill.valid { background: #dcfce7; color: #166534; }
+.pill.invalid { background: #fee2e2; color: #991b1b; }
+
+.btn-icon {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
