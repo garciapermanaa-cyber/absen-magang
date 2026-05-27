@@ -21,6 +21,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello World from Absen Magang Backend!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
