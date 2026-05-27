@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import prisma from '../src/utils/prisma';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 async function main() {
   // 1. Seed Office
